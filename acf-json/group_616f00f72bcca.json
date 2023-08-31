@@ -1,0 +1,59 @@
+{
+    "key": "group_616f00f72bcca",
+    "title": "Sponsors and Partners",
+    "fields": [
+        {
+            "key": "field_616f011ffbe89",
+            "label": "Sponsor Level",
+            "name": "sponsor_level",
+            "type": "radio",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Diamond Partner": "Diamond Partner",
+                "Platinum Partner": "Platinum Partner",
+                "Gold Partner": "Gold Partner",
+                "Silver Partner": "Silver Partner",
+                "Bronze Partner": "Bronze Partner"
+            },
+            "allow_null": 0,
+            "other_choice": 1,
+            "save_other_choice": 1,
+            "default_value": "Please select",
+            "layout": "horizontal",
+            "return_format": "value"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_parent",
+                "operator": "==",
+                "value": "70353"
+            }
+        ],
+        [
+            {
+                "param": "page_parent",
+                "operator": "==",
+                "value": "50153"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1646064812
+}

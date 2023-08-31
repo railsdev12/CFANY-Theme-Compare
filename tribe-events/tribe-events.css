@@ -1,0 +1,736 @@
+#boxed-wrapper {
+    overflow: visible
+}
+
+.tribe-events-notices li {
+    list-style: none
+}
+
+.tribe-events-ajax-loading {
+    display: none;
+    position: absolute;
+    left: 50%;
+    -webkit-box-shadow: none;
+    box-shadow: none
+}
+
+.tribe-events-loading .tribe-events-ajax-loading {
+    display: block
+}
+
+.to-top-container,
+span.tribe-country-name {
+    display: none
+}
+
+.single.single-tribe_events agenda em,
+.single.single-tribe_events blockquote,
+.tribe-events-event-meta address.tribe-events-address {
+    font-style: normal
+}
+
+.footer-bold,
+.footer-title,
+.fusion-text a,
+.single.single-tribe_events blockquote a,
+.single.single-tribe_events blockquote strong,
+.single.single-tribe_events strong {
+    font-family: "CFA Breuer Text Medium";
+    font-weight: 400
+}
+
+.agenda h3.title-heading-left,
+.fusion-title h3:not(.fusion-default-margin) {
+    margin: 0;
+    font-size: 24px
+}
+
+#event-overview,
+#event-overview .title-heading-left {
+    margin-top: 0 !important
+}
+
+.single.single-tribe_events .agenda h2.title-heading-left {
+    font-size: 24px !important
+}
+
+.single.single-tribe_events .agenda p {
+    line-height: inherit;
+    font-family: "CFA Breuer Regular";
+    color: #666;
+    margin: 0 0 20px;
+    font-size: 16px
+}
+
+hr.agenda-panel {
+    border: dashed #777;
+    margin: 20px 40% 20px 0;
+    border-width: 1px 0 0
+}
+
+.fusion-text {
+    line-height: 1.7
+}
+
+.fusion-text ul li {
+    margin-bottom: 5px
+}
+
+.fusion-text ul {
+    padding: 0 0 0 15px
+}
+
+.single.single-tribe_events .agenda blockquote {
+    margin-top: 1.2em;
+    margin-bottom: 2.5em;
+    padding: 35px 15px 20px;
+    border: solid 1px #dad9d9;
+    background-color: #f7f7f7;
+    -webkit-margin-start: 0;
+    margin-inline-start: 0;
+    -webkit-margin-end: 0;
+    margin-inline-end: 0
+}
+
+h4.tribe-events-single-section-title {
+    height: 62px;
+    text-align: center;
+    padding-top: 15px !important;
+    padding: 9px 15px;
+    border-radius: 3pt 3pt 0 0;
+    font-family: "CFA Breuer Text Bold" !important;
+    background-color: #dad9d9 !important
+}
+
+.tribe-events-meta-group.tribe-events-meta-group-details {
+    padding: 0 25px
+}
+
+.meta-membership {
+    text-align: center;
+    margin-top: 5px
+}
+
+.single.single-tribe_events #main {
+    margin-top: 70px;
+    overflow: visible !important
+}
+
+#sidebar {
+    margin-top: -132px
+}
+
+footer.fusion-footer-widget-area.fusion-widget-area {
+    background-color: #fff
+}
+
+.fusion-sidebar-inner-content,
+.single-tribe_events .tribe-events-event-meta {
+    background-color: #fff;
+    color: #666 !important;
+    -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
+    border-radius: 3pt
+}
+
+dd.tribe-organizer {
+    padding-bottom: 0 !important;
+    margin-bottom: 5px !important
+}
+
+dd.tribe-venue {
+    margin-bottom: 0 !important;
+    padding: 0 !important
+}
+
+.sidebar .tribe-events-meta-group {
+    margin-bottom: 20px;
+    padding: 0 25px
+}
+
+abbr.tribe-events-abbr.tribe-events-start-date.published.dtstart {
+    text-decoration: none
+}
+
+dt.tribe-events-speakerorg-label,
+dt.tribe-events-venue-label {
+    margin-bottom: 10px !important
+}
+
+.fusion-text.footer-text {
+    margin: 1em 0;
+    font-size: 14px
+}
+
+.event-disclaimer {
+    background-color: #fff !important;
+    margin-top: 0 !important
+}
+
+#the-disclaimer {
+    padding-top: 70px;
+    padding-bottom: 70px;
+    max-width: 1130px;
+    margin: 0 auto
+}
+
+.event-disclaimer #clear-toggle {
+    background: 0 0;
+    padding: 0
+}
+
+.event-disclaimer #clear-toggle.fusion-accordian .panel-title .fusion-toggle-heading {
+    margin: 0;
+    padding-left: 30px;
+    color: #666
+}
+
+.event-disclaimer,
+.single-tribe_events #main .sidebar.fusion-sticky-sidebar .fusion-sidebar-inner-content {
+    padding: 0 !important
+}
+
+.tribe-events-single-section.tribe-events-event-meta.primary>.tribe-events-meta-group {
+    padding: 0 25px;
+    margin: 0
+}
+
+.tribe-events-meta-group.tribe-events-meta-group-organizer {
+    padding-bottom: 15px !important
+}
+
+.title-tribe-cat {
+    font-family: "CFA Breuer Text Light";
+    color: #f7f7f7;
+    font-size: 1rem
+}
+
+.footer-italic,
+.fusion-text em {
+    font-family: "cfa breuer italic";
+    font-weight: 400;
+    font-style: normal
+}
+
+.agenda blockquote a,
+.single-tribe_events .tribe-events-event-meta dt {
+    font-family: "CFA Breuer Text Medium" !important;
+    font-weight: 400 !important;
+    font-style: normal !important
+}
+
+.single-tribe_events .footer-italic,
+.single-tribe_events .fusion-text em {
+    font-family: "CFA Breuer Italic" !important;
+    font-weight: 400 !important;
+    font-style: normal !important
+}
+
+.custom-tribe-events-list-event-description.tribe-events-content.description.entry-summary a,
+.tribe-events-duration,
+.tribe-events-event-meta dt {
+    font-family: "CFA Breuer Text Medium";
+    font-weight: 400 !important;
+    font-style: normal !important
+}
+
+.fusion-page-title-wrapper.aos-event {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center
+}
+
+.titlebar-logo {
+    width: 800px;
+    height: 100%
+}
+
+.aos-branding,
+.fusion-events-single-title-content {
+    margin-bottom: 40px;
+    color: #063e5e
+}
+
+.aos-branding>.entry-title,
+.fusion-events-single-title-content>.entry-title {
+    font-family: "cfa breuer text bold";
+    font-size: 2.4rem;
+    margin-bottom: 10px !important;
+    line-height: 1.2 !important;
+    color: #063e5e
+}
+
+.aos-branding>.title-event-date,
+.tribe-events-schedule>h3 span {
+    font-family: "cfa breuer text medium";
+    margin-top: 0;
+    font-size: 1.2rem;
+    color: #666 !important;
+    font-weight: 400
+}
+
+.single-tribe_events.tribe-events-page-template .tribe-events-schedule>* {
+    color: #666 !important
+}
+
+.single-tribe_events.tribe-events-page-template {
+    background-color: #f7f7f7 !important
+}
+
+.cvent-reg>a:not([href*="cfany.cfasocietyevents.org"]):not([href*="cvent.me"]).my-button-class::before {
+    content: "";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #fff !important;
+    order: 1;
+    justify-content: space-evenly !important;
+    margin-left: 10px
+}
+
+.cvent-reg>a:not([href*="cfany.cfasocietyevents.org"]):not([href*="cvent.me"]).my-button-class::after {
+    content: "External Registration";
+    background-color: #fff;
+    width: auto;
+    margin-top: 8px;
+    order: 2;
+    font-family: "CFA Breuer Text Medium";
+    font-size: .8em;
+    display: inline-block !important;
+    padding: 2px 8px;
+    color: #168fd4;
+    letter-spacing: .5px;
+    border-radius: 3px;
+    margin-bottom: 5px
+}
+
+.cvent-reg>a:not([href*="cfany.cfasocietyevents.org"]):not([href*="cvent.me"]).my-button-class {
+    background-color: #063e5e !important;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    line-height: 1.3
+}
+
+.mobile-register-attend.cvent-reg>a:not([href*="cfany.cfasocietyevents.org"]):not([href*="cvent.me"]) {
+    display: flex;
+    align-items: center
+}
+
+.mobile-register-attend.cvent-reg>a:not([href*="cfany.cfasocietyevents.org"]):not([href*="cvent.me"])::before {
+    content: "[External Link]";
+    display: inline-block;
+    font-size: .8em;
+    margin-right: 5px;
+    color: #666
+}
+
+@media all and (min-width:801px) {
+    #sidebar {
+        position: static
+    }
+
+    .main-mobile-metabox,
+    .mobile-meta-section-title {
+        display: none
+    }
+
+    .agenda {
+        padding: 0 25px;
+        -webkit-box-shadow: 0 4px 7px 3px rgba(0, 0, 0, .25);
+        box-shadow: 0 4px 7px 3px rgba(0, 0, 0, .25);
+        border-radius: 5px;
+        background-color: #fff
+    }
+
+    .single.single-tribe_events #main>.fusion-row>#content {
+        margin-top: -20px
+    }
+
+    .meta-box+.meta-box {
+        text-align: center;
+        background-color: #f7f7f7;
+        padding: 10px;
+        margin-bottom: 25px;
+        border: 1px solid #dad9d9;
+        -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, .1)
+    }
+
+    #sidebar .meta-box+.meta-box .meta-grid {
+        padding: 0;
+        margin: 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column
+    }
+
+    .live-register-link {
+        margin-top: 15px !important
+    }
+
+    .meta-box+.meta-box .meta-grid>.live-register-link {
+        margin: 10px auto !important;
+        width: 80%
+    }
+
+    .meta-box+.meta-box .meta-grid>.live-register-link>.live-btn {
+        background-color: #063e5e
+    }
+
+    .aos-branding,
+    .fusion-events-single-title-content {
+        background-color: #fff !important;
+        padding: 25px 25px 10px;
+        border: solid 1px #eee;
+        -webkit-box-shadow: 0 1px 3px #ddd;
+        box-shadow: 0 1px 3px #ddd;
+        border-radius: 3px
+    }
+
+    .tribe-events-notices:not(.fusion-alert) {
+        top: -15px
+    }
+}
+
+@media (max-width:800px) {
+    #sidebar {
+        -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+        order: 1
+    }
+
+    .sidebar .tribe-events-meta-group,
+    .tribe-events-meta-group.tribe-events-meta-group-details,
+    h3.title-event-date,
+    h4.tribe-events-single-section-title {
+        display: none
+    }
+
+    .aos-mobile-cost,
+    .mobile-time {
+        float: right
+    }
+
+    .mobile-meta-attend-box,
+    .mobile-meta-livestream-box {
+        padding-right: 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center
+    }
+
+    .mobile-meta-cost,
+    .mobile-meta-livestream,
+    .mobile-meta-to-attend {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 1 55%;
+        flex: 0 1 55%
+    }
+
+    .mobile-live-register-link,
+    .mobile-register-attend {
+        position: relative;
+        top: 5px;
+        font-size: 15px
+    }
+
+    :not(.aos-only) .mobile-meta-livestream-box>.mobile-meta-livestream {
+        -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+        order: 2
+    }
+
+    hr.mobile-meta-sep {
+        margin: 4px 0
+    }
+
+    .mobile-meta-to-attend {
+        font-family: "CFA Breuer Text Medium"
+    }
+
+    #main>.fusion-row {
+        width: 100vw;
+        margin-left: -30px !important
+    }
+
+    #tribe-events-pg-template {
+        padding: 20px
+    }
+
+    #content,
+    #tribe-events-content,
+    .single-tribe_events .tribe-events-single-event-description {
+        margin-bottom: 0 !important
+    }
+
+    .main-mobile-metabox {
+        padding: 5px 10px;
+        background-color: #dad9d9
+    }
+
+    .mobile-meta-section-title {
+        background-color: #063e5e;
+        color: #fff;
+        padding: 5px 10px
+    }
+
+    #sidebar {
+        bottom: 0;
+        margin-top: auto
+    }
+
+    #content,
+    #sidebar {
+        position: -webkit-sticky;
+        position: sticky
+    }
+
+    .layout-wide-mode #wrapper {
+        overflow: visible !important
+    }
+
+    .single.single-tribe_events #main {
+        margin-top: 0
+    }
+
+    .tribe-mobile #main {
+        padding-top: 0 !important
+    }
+
+    .single.single-tribe_events .tribe-events-event-meta {
+        font-size: 12px;
+        color: #333 !important
+    }
+
+    .single.single-tribe_events ul {
+        padding-left: 25px
+    }
+
+    .single.single-tribe_events .mobile-register-attend>a.fusion-modal-text-link {
+        font-size: 15px
+    }
+
+    .mobile-meta-section-title p {
+        margin: 0
+    }
+
+    .single.single-tribe_events .agenda blockquote {
+        background-color: #fff
+    }
+
+    .aos-branding {
+        width: 100%;
+        border-bottom: solid
+    }
+
+    .fusion-events-single-title-content {
+        width: 100%;
+        background-color: #fff !important;
+        padding: 25px 10px;
+        border: solid 1px #eee;
+        -webkit-box-shadow: 0 1px 3px #ddd;
+        box-shadow: 0 1px 3px #ddd;
+        border-radius: 3px
+    }
+
+    .tribe-events-schedule>h3 span {
+        font-size: 14px
+    }
+
+    .aos-branding>.entry-title,
+    .fusion-events-single-title-content>.entry-title {
+        font-size: 2rem
+    }
+
+    .fusion-events-single-title-content>.entry-title {
+        margin-bottom: 0 !important
+    }
+
+    .aos-branding>.title-event-date {
+        display: block;
+        font-size: .9rem
+    }
+}
+
+/*
+***
+* STYLING 'SOCIAL SHARE' ELEMENT FOR DESKTOP AND MOBILE 
+***
+* Mobile element can be hidden above 800px,
+* but is not currently
+***
+*/
+
+/* SOCIAL SHARE STYLING **WITH** BG */
+.single-tribe_events .sidebar .tribe-events-event-meta .tribe-events-meta-group.tribe-events-social-share {
+    margin-bottom: 0;
+    margin-left: -25px;
+    margin-right: -25px;
+}
+
+.tribe-events-meta-group.tribe-events-social-share>.fusion-sharing-box {
+    width: 100% !important;
+    display: block !important;
+    min-height: 0 !important;
+    display: flex !important;
+    padding: 12px 25px 15px;
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
+    margin-top: 0 !important;
+}
+
+.tribe-events-meta-group.tribe-events-social-share>.fusion-sharing-box h4 {
+    font-size: 16px !important;
+    flex: 1 1 auto;
+    color: #666 !important;
+}
+
+.fusion-sharing-box>.fusion-social-networks>span:first-of-type i {
+    margin-left: 0 !important;
+}
+
+.fusion-sharing-box i {
+    color: #168fd4 !important;
+}
+
+
+/* UPPERMOST (or mobile only) STYLES
+    SOCIAL SHARE STYLING
+    **WITH** BG */
+
+@media all and (min-width: 801px) {
+
+    /* To hide uppermost share element on desktop only, uncomment first rule below */
+
+    /*  #tribe-events-pg-template .tribe-events-before-html .fusion-sharing-box {
+            display: none !important;
+        } */
+
+    #tribe-events-pg-template .tribe-events-before-html .fusion-sharing-box {
+        min-height: 0 !important;
+    }
+
+    #tribe-events-pg-template .tribe-events-before-html .fusion-sharing-box {
+        margin-top: -20px !important;
+        justify-content: flex-start !important;
+        max-width: 425px !important;
+        padding: 15px 25px 15px 15px;
+    }
+
+
+    #tribe-events-pg-template .tribe-events-before-html .fusion-sharing-box>h4 {
+        /*         flex: 1 1 25% !important; */
+        max-width: 130px;
+        margin-right: 35px;
+        flex: 1 1 40% !important;
+    }
+
+    #tribe-events-pg-template .tribe-events-before-html .fusion-sharing-box>div {
+        flex: 1 1 60% !important;
+        justify-content: space-evenly !important;
+    }
+
+}
+
+@media all and (max-width: 800px) {
+    #tribe-events-pg-template .tribe-events-before-html .fusion-sharing-box {
+        margin-top: 5px !important;
+        /*         justify-content: space-between !important; */
+        padding: 12px 25px 12px !important;
+        min-height: 0;
+        align-items: center !important;
+    }
+
+    #tribe-events-pg-template .tribe-events-before-html .fusion-sharing-box>.fusion-social-networks.sharingbox-shortcode-icon-wrapper {
+        justify-content: space-between !important;
+        width: auto !important;
+    }
+}
+
+@media all and (max-width: 460px) {
+
+    #tribe-events-pg-template .tribe-events-before-html .fusion-sharing-box {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    #tribe-events-pg-template .tribe-events-before-html .fusion-sharing-box>.fusion-social-networks.sharingbox-shortcode-icon-wrapper {
+        min-width: 55%
+    }
+
+    #tribe-events-pg-template .tribe-events-before-html .fusion-sharing-box>h4.tagline {
+        font-size: 14px !important;
+    }
+}
+
+#tribe-events-pg-template .tribe-events-before-html .fusion-sharing-box {
+    margin-bottom: 35px;
+    display: flex !important;
+    flex-direction: row !important;
+    background-color: #fff !important;
+    max-width: calc(100% - 8vw);
+    width: auto !important;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+#tribe-events-pg-template .tribe-events-before-html .fusion-sharing-box .sharingbox-shortcode-icon-wrapper span>a {
+    align-content: center !important;
+    justify-content: center !important;
+    display: flex !important;
+}
+
+#tribe-events-pg-template .tribe-events-before-html .fusion-sharing-box .sharingbox-shortcode-icon-wrapper span>a>i {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+#tribe-events-pg-template .tribe-events-before-html .fusion-sharing-box.fusion-sharing-box {
+    width: 100% !important;
+    display: block !important;
+    display: flex !important;
+    /*   padding: 10px 15px 10px 10px; */
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+
+#tribe-events-pg-template .tribe-events-before-html .fusion-sharing-box>h4 {
+    font-size: 16px !important;
+    flex: 1 1 50%;
+    color: #666 !important;
+    margin-bottom: 0 !important;
+    white-space: pre;
+    text-align: center;
+    font-family: "CFA Breuer Text Medium";
+    letter-spacing: .5px;
+    color: #777 !important;
+}
+
+/*   #tribe-events-pg-template .tribe-events-before-html .fusion-sharing-box>.fusion-social-networks,
+      #tribe-events-pg-template .tribe-events-before-html .fusion-sharing-box>.tagline {
+        flex: 1 1 50% !important;
+      } */
+
+#tribe-events-pg-template .tribe-events-before-html .fusion-sharing-box>.fusion-social-networks.sharingbox-shortcode-icon-wrapper {
+    text-align: center !important;
+}
+
+
+
+#tribe-events-pg-template .tribe-events-before-html .fusion-sharing-box i {
+    color: #168fd4 !important;
+}

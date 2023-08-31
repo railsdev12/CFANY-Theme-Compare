@@ -1,0 +1,401 @@
+{
+    "key": "group_5a3c0e2042194",
+    "title": "Pricing & Registration",
+    "fields": [
+        {
+            "key": "field_5c4f141f7a0b7",
+            "label": "Note",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "<strong>Don't forget to use the \"Excerpt\" section above to add at least a couple of sentences from the event description. This is what creates the preview text for the event on the upcoming calendar pages\/widgets. Without an excerpt, random code is added by default.<\/strong>",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_605a2b187b21c",
+            "label": "Advanced Config",
+            "name": "advanced_config",
+            "type": "checkbox",
+            "instructions": "<strong>Multi-Day Event<\/strong> - Default date output values removed. Must enter date\/time manually.<br><br>\r\n\r\n<strong>Pricing Info Modal<\/strong> - Enables \"Pricing\" button in floating sidebar (on desktop) and floating footer (on mobile). Default pricing output values will be removed. <span>You must add \"Modal\" element in body of page using Fusion Builder. <em>Name of Modal<\/em> must be set exactly as <strong>all_pricing_info<\/strong>.<\/span><br><br>\r\n\r\n<strong>Hide Pricing Info Modal on Desktop<\/strong> - \"Pricing\" button will be disabled in floating sidebar on desktop devices, and only appear in the floating footer for the sake of space. <span>You still must add \"Modal\" element in body of page using Fusion Builder. <em>Name of Modal<\/em> must be set exactly as <strong>all_pricing_info<\/strong>.<\/span> If you select this option, don't forget to fill in the original \"Cost to Attend\" field values, or no pricing will be displayed on desktop.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "multi": "Multi-Day Event",
+                "extra": "Pricing Info Modal",
+                "nomodal": "Hide Pricing Info Modal on Desktop"
+            },
+            "allow_custom": 0,
+            "default_value": [],
+            "layout": "horizontal",
+            "toggle": 0,
+            "return_format": "value",
+            "save_custom": 0
+        },
+        {
+            "key": "field_605a2b347b21d",
+            "label": "Multi-Day Details",
+            "name": "multi-day_details",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_605a2b187b21c",
+                        "operator": "==",
+                        "value": "multi"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "multi-day-custom",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 1
+        },
+        {
+            "key": "field_62420d37b2d0a",
+            "label": "Global Passport",
+            "name": "global_passport",
+            "type": "checkbox",
+            "instructions": "If this event is Global Passport Program eligible, select the checkbox here.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Global Passport Event": "Global Passport Event"
+            },
+            "allow_custom": 0,
+            "default_value": [],
+            "layout": "vertical",
+            "toggle": 0,
+            "return_format": "value",
+            "save_custom": 0
+        },
+        {
+            "key": "field_5c706b89f45b5",
+            "label": "Request Invitation Requirement?",
+            "name": "reg_settings",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "None": "None",
+                "Nonmembers": "Nonmembers",
+                "All": "All",
+                "comps": "Comps Only"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "None",
+            "layout": "horizontal",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_5ecd81d087595",
+            "label": "Video Portal Link",
+            "name": "video_portal_link",
+            "type": "radio",
+            "instructions": "Should the video portal button appear?",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5c706b89f45b5",
+                        "operator": "!=",
+                        "value": "None"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "No": "No",
+                "Yes": "Yes"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "No",
+            "layout": "horizontal",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_5f5a41b67d334",
+            "label": "NEW (or Cvent) Registration URL",
+            "name": "cvent_reg_link",
+            "type": "url",
+            "instructions": "For any event with start date <strong>AFTER<\/strong> September 28, 2020",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "cvent-reg-link",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_5c48f497d303e",
+            "label": "Cost to Attend",
+            "name": "to_attend_copy",
+            "type": "textarea",
+            "instructions": "Ex: $30 Members | $70 Nonmembers. If you do not yet have pricing, the value \"TBA\" should be set.",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_605a2b187b21c",
+                        "operator": "!=",
+                        "value": "extra"
+                    },
+                    {
+                        "field": "field_5f5a41b67d334",
+                        "operator": "!=empty"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_605a2b187b21c",
+                        "operator": "==",
+                        "value": "extra"
+                    },
+                    {
+                        "field": "field_605a2b187b21c",
+                        "operator": "==",
+                        "value": "nomodal"
+                    },
+                    {
+                        "field": "field_5f5a41b67d334",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_5a3c0ebdcefe8",
+            "label": "Cost for Livestream",
+            "name": "livestream",
+            "type": "text",
+            "instructions": "Ex: Free | Members Only",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5c48f509d303f",
+            "label": "Livestream Registration Link",
+            "name": "live_reg_link",
+            "type": "url",
+            "instructions": "Ex: https:\/\/service.cfany.org\/nyssassa\/evtssareg.custinfo?p_event_id=",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_5dcc24dca66e3",
+            "label": "Misc Title\/Header",
+            "name": "misc_title",
+            "type": "text",
+            "instructions": "Ex: Asset Owners Attend Free",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5c706b89f45b5",
+                        "operator": "==",
+                        "value": "comps"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_5ecd81d087595",
+                        "operator": "==",
+                        "value": "Yes"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "CFA Institute Global Passport and CAIA Members",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5dcc244ba66e2",
+            "label": "Misc Cost\/Additional Info",
+            "name": "misc_copy",
+            "type": "text",
+            "instructions": "Ex: Free | Members Only",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5c706b89f45b5",
+                        "operator": "==",
+                        "value": "comps"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_5ecd81d087595",
+                        "operator": "==",
+                        "value": "Yes"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Find your local video portal page",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5dcc261a056f3",
+            "label": "Misc CTA\/Button Text",
+            "name": "misc_cta",
+            "type": "text",
+            "instructions": "Ex: Complimentary Admission",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5c706b89f45b5",
+                        "operator": "==",
+                        "value": "comps"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_5ecd81d087595",
+                        "operator": "==",
+                        "value": "Yes"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5c706bd9f45b6",
+            "label": "Special Registration Status?",
+            "name": "reg_status",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "None": "None",
+                "Save the Date": "Save the Date",
+                "Sold Out": "Sold Out",
+                "Registration Closed": "Registration Closed"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "None",
+            "layout": "horizontal",
+            "return_format": "value",
+            "save_other_choice": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "tribe_events"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1648496034
+}

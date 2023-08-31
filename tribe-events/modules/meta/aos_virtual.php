@@ -1,0 +1,312 @@
+<?php
+/**
+ * Single Event Meta (Details) Template
+ *
+ * Override this template in your own theme by creating a file at:
+ * [your-theme]/tribe-events/modules/meta/details.php
+ *
+ * @package TribeEventsCalendar
+ * @version 4.6.19
+ */
+
+
+$time_format = get_option( 'time_format', Tribe__Date_Utils::TIMEFORMAT );
+$time_range_separator = tribe_get_option( 'timeRangeSeparator', ' - ' );
+
+$start_datetime = tribe_get_start_date();
+$start_date = tribe_get_start_date( null, false );
+$start_time = tribe_get_start_date( null, false, $time_format );
+$start_ts = tribe_get_start_date( null, false, Tribe__Date_Utils::DBDATEFORMAT );
+
+$the_customdate = date("l, M. j", strtotime($start_date));
+
+$end_datetime = tribe_get_end_date();
+$end_date = tribe_get_display_end_date( null, false );
+$end_time = tribe_get_end_date( null, false, $time_format );
+$end_ts = tribe_get_end_date( null, false, Tribe__Date_Utils::DBDATEFORMAT );
+
+$time_formatted = null;
+if ( $start_time == $end_time ) {
+	$time_formatted = esc_html( $start_time );
+} else {
+	$time_formatted = esc_html( $start_time . $time_range_separator . $end_time );
+}
+
+$event_id = Tribe__Main::post_id_helper();
+
+/**
+ * Returns a formatted time for a single event
+ *
+ * @var string Formatted time string
+ * @var int Event post id
+ */
+$time_formatted = apply_filters( 'tribe_events_single_event_time_formatted', $time_formatted, $event_id );
+
+/**
+ * Returns the title of the "Time" section of event details
+ *
+ * @var string Time title
+ * @var int Event post id
+ */
+$time_title = apply_filters( 'tribe_events_single_event_time_title', __( 'Time:', 'the-events-calendar' ), $event_id );
+
+// Cost to attend text
+$toattend = get_field('to_attend_copy');
+// Attend registration URL for link or button
+$direct_reg_url = get_field('attend_reg_link');
+// Cost for livestream text
+$livestream = get_field('livestream');
+// Livestream registration URL for link or button
+$live_link = get_field('live_reg_link');
+
+// CVENT registration URL for link or button
+$cvent_link = get_field('cvent_reg_link');
+
+$misc_title = get_field('misc_title');
+$misc_copy = get_field('misc_copy');
+$misc_cta = get_field('misc_cta');
+
+$advanced_config = get_field('advanced_config');
+if( $advanced_config && in_array('extra', $advanced_config) ) {
+    $price_modal_link = 'Hello';
+    $price_modal_btn = `<a class="my-button-class live-btn fusion-button-wrapper fusion-aligncenter" target="_self" href="#" data-toggle="modal" data-target=".fusion-modal.all_pricing_info"><span lass="fusion-button-text">View Pricing</span></a>`;
+}
+
+ //  if( $advanced_config && in_array('extra', $advanced_config) ) {
+//       echo $price_modal_btn;
+//     }
+
+$multi_day_on = get_field('multi-day_details');
+$price_modal_on = get_field('pricing_info_modal');
+$hide_modal_desktop = get_field('');
+
+if( ($advanced_config && in_array('extra', $advanced_config)) && ($advanced_config && !in_array('nomodal', $advanced_config)) ) {
+
+}
+
+if ( $advanced_config && in_array('extra', $advanced_config) ) {
+$pricing_modal_on = true;
+}
+
+if ( $advanced_config && in_array('nomodal', $advanced_config) ) {
+$pricing_modal_desktop_only = true;
+}
+
+?>
+
+
+    <h2 class="tribe-events-single-section-title"> <?php esc_html_e( 'Details', 'the-events-calendar' ) ?> </h2>
+
+    <div class="tribe-events-meta-group tribe-events-meta-group-details">
+
+		<?php do_action( 'tribe_events_single_meta_details_section_start' );
+
+		// All day (multiday) events
+		if ( tribe_event_is_all_day() && tribe_event_is_multiday() ) :
+			?>
+
+            <dt class="tribe-events-start-date-label"> <?php esc_html_e( 'Start:', 'the-events-calendar' ) ?> </dt>
+            <dd>
+                <abbr class="tribe-events-abbr tribe-events-start-date published dtstart" title="<?php esc_attr_e( $start_ts ) ?>"> <?php esc_html_e( $start_date ) ?> </abbr>
+            </dd>
+
+            <dt class="tribe-events-end-date-label"> <?php esc_html_e( 'End:', 'the-events-calendar' ) ?> </dt>
+            <dd>
+                <abbr class="tribe-events-abbr tribe-events-end-date dtend" title="<?php esc_attr_e( $end_ts ) ?>"> <?php esc_html_e( $end_date ) ?> </abbr>
+            </dd>
+
+		<?php
+		// All day (single day) events
+        elseif ( tribe_event_is_all_day() ):
+			?>
+
+            <dt class="tribe-events-start-date-label"> <?php esc_html_e( 'Date:', 'the-events-calendar' ) ?> </dt>
+            <dd>
+                <abbr class="tribe-events-abbr tribe-events-start-date published dtstart" title="<?php esc_attr_e( $start_ts ) ?>"> <?php esc_html_e( $start_date ) ?> </abbr>
+            </dd>
+
+		<?php
+		// Multiday events
+        elseif ( tribe_event_is_multiday() ) :
+			?>
+
+            <dt class="tribe-events-start-datetime-label"> <?php esc_html_e( 'Start:', 'the-events-calendar' ) ?> </dt>
+            <dd>
+                <abbr class="tribe-events-abbr tribe-events-start-datetime updated published dtstart" title="<?php esc_attr_e( $start_ts ) ?>"> <?php esc_html_e( $start_datetime ) ?> </abbr>
+            </dd>
+
+            <dt class="tribe-events-end-datetime-label"> <?php esc_html_e( 'End:', 'the-events-calendar' ) ?> </dt>
+            <dd>
+                <abbr class="tribe-events-abbr tribe-events-end-datetime dtend" title="<?php esc_attr_e( $end_ts ) ?>"> <?php esc_html_e( $end_datetime ) ?> </abbr>
+            </dd>
+
+		<?php
+		// Single day events
+		else :
+			?>
+
+
+
+            <dt class="tribe-events-start-date-label"> <?php esc_html_e( 'Date & Time', 'the-events-calendar' ) ?> </dt>
+            <dd>
+                <abbr class="tribe-events-abbr tribe-events-start-date published dtstart" title="<?php esc_attr_e( $start_ts ) ?>"> <?php esc_html_e( $start_date ) ?> </abbr>
+
+                <div class="tribe-events-abbr tribe-events-start-time published dtstart" title="<?php esc_attr_e( $end_ts ) ?>">
+					<?php echo $time_formatted; ?>
+                </div>
+            </dd>
+
+		<?php endif ?>
+
+
+		<?php if ($toattend || $cvent_link) : ?>
+            <div class="meta-box">
+                <dl class="meta-details">
+                    <dt><div class="meta-to-attend"><?php esc_html_e( 'To Attend', 'the-events-calendar' ) ?></div></dt>
+                    <dd class="meta-grid">
+                        <div class="meta-cost"><?php echo the_field('to_attend_copy'); ?></div><br>
+						<?php if( get_field('reg_settings') === 'None' ): ?>
+                            <div class="register-attend aa-legacy"><a href="<?php echo $direct_reg_url; ?>" class="my-button-class fusion-button-wrapper fusion-aligncenter">Register to Attend</a></div>
+                            <div class="register-attend cvent-reg"><a href="<?php echo $cvent_link; ?>" class="my-button-class fusion-button-wrapper fusion-aligncenter">Register to Attend</a></div>
+						<?php elseif( get_field('reg_settings') === 'All' ): ?>
+                            <div class="register-attend"><?php echo do_shortcode('[fusion_button link="" text_transform="" title="" target="_self" link_attributes="" alignment="center" modal="request" class="aos-reg-button" id="]Request Invitation[/fusion_button]'); ?></div>
+						<?php else: ?>
+                            <div class="register-attend aa-legacy"><a href="<?php echo $direct_reg_url; ?>" class="my-button-class fusion-button-wrapper fusion-aligncenter">Members: Register</a></div>
+                            <div class="register-attend cvent-reg"><a href="<?php echo $cvent_link; ?>" class="my-button-class fusion-button-wrapper fusion-aligncenter">Members: Register</a></div>
+
+						<?php endif; ?>
+                        <div class="meta-membership"><?php echo ' <a href="/membership/">Not a Member Yet?</a> '?></div>
+                    </dd>
+                </dl>
+            </div>
+		<?php endif; ?>
+
+		<?php if ( $livestream ) : ?>
+
+            <div class="meta-box request-form">
+                <dl class="meta-details">
+                    <dt><div class="meta-to-attend"><?php esc_html_e( 'Asset Owners', 'the-events-calendar' ) ?></div></dt>
+                    <dd class="meta-grid">
+                        <div class="meta-livestream"><?php echo the_field('livestream'); ?></div>
+                        <div class="live-register-link"><?php echo do_shortcode('[fusion_modal_text_link name="request" class="" id=""]Request Invitation »[/fusion_modal_text_link]'); ?></div>
+                    </dd>
+                </dl>
+            </div>
+		<?php endif; ?>
+
+
+
+		<?php if( get_field('video_portal_link') === 'Yes' ): ?>
+
+            <div class="meta-box comp">
+                <dl class="meta-details">
+                    <dt>
+                        <div class="meta-to-attend"><?php echo the_field('misc_title'); ?></div>
+                    </dt>
+                    <dd class="meta-grid">
+                        <div class="meta-livestream"> <?php echo the_field('misc_copy'); ?></div>
+                        <div class="live-register-link">
+                            <a href="/asset-owner-series/aos-virtual-keynotes/video-portal-links/" class="my-button-class fusion-button-wrapper fusion-aligncenter">Video Portals</a>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+
+		<?php endif; ?>
+
+    </div>
+
+    <div class="mobile-meta-section-title aos-only">
+
+		<?php if( tribe_event_is_all_day() || tribe_event_is_multiday() ): ?>
+
+			<p class="js-multiday"><span class="js-mobile-datetime"><?php esc_html_e( $start_date ) ?> <?php esc_html_e( ' and ', 'the-events-calendar' ) ?> <?php echo $end_date;?></span></p>
+			<p class="js-multiday"><span class="js-location"><?php esc_html_e( ' @ CFANY ', 'the-events-calendar' ) ?></span><span class="aos-mobile-cost"><?php echo the_field('to_attend_copy'); ?></span></p>
+
+		<?php else : ?>
+
+			<p class="js-singleday"><span class="js-mobile-datetime"><?php echo $the_customdate; ?> </span><span class="mobile-time"> <?php echo $time_formatted; ?> </span></p>
+            <p class="js-singleday"><span class="js-location"><?php esc_html_e( ' @ CFANY ', 'the-events-calendar' ) ?></span><span class="aos-mobile-cost"><?php echo the_field('to_attend_copy'); ?></span></p>
+
+		<?php endif; ?>
+    </div>
+
+
+<?php if (($toattend || $cvent_link) && ! ($advanced_config)) : ?>
+
+    <div class="main-mobile-metabox aos-only aos-virtual">
+
+		<?php if( get_field('reg_settings') === 'None' ): ?>
+
+            <div class="mobile-meta-attend-box direct-register">
+
+                <div class="mobile-meta-to-attend"><?php esc_html_e( 'Attend:', 'the-events-calendar' ) ?></div>
+                <div class="mobile-meta-cost"><?php echo the_field('to_attend_copy'); ?></div>
+                <div class="mobile-register-attend aa-legacy"><a href="<?php echo $direct_reg_url; ?>">Register »</a></div>
+                <div class="mobile-register-attend cvent-reg"><a href="<?php echo $cvent_link; ?>">Register »</a></div>
+
+            </div>
+
+		<?php elseif( get_field('reg_settings') === 'All' ): ?>
+
+            <div class="mobile-meta-attend-box request-form">
+
+                <div class="mobile-meta-to-attend"><?php esc_html_e( 'Attend:', 'the-events-calendar' ) ?></div>
+                <div class="mobile-meta-cost"><?php echo the_field('to_attend_copy'); ?></div>
+                <div class="mobile-register-attend">
+					<?php echo do_shortcode('[fusion_modal_text_link name="request" class="" id=""]Request Invite »[/fusion_modal_text_link]'); ?>
+                </div>
+
+            </div>
+
+		<?php else: ?>
+
+            <div class="mobile-meta-attend-box direct-register">
+
+                <div class="mobile-meta-to-attend members"><?php esc_html_e( 'Members: ', 'the-events-calendar' ) ?></div>
+                <div class="mobile-meta-cost"><?php esc_html_e( 'Free - direct registration available', 'the-events-calendar' ) ?></div>
+                <div class="mobile-register-attend aa-legacy"><a href="<?php echo $direct_reg_url; ?>">Register »</a></div>
+                <div class="mobile-register-attend cvent-reg"><a href="<?php echo $cvent_link; ?>">Register »</a></div>
+
+            </div>
+
+            <hr class="mobile-meta-sep">
+
+            <div class="mobile-meta-livestream-box request-form">
+
+                <div class="mobile-meta-to-attend nonmembers"><?php esc_html_e( 'Asset Owners: ', 'the-events-calendar' ) ?></div>
+                <div class="mobile-meta-cost"><?php esc_html_e( 'Free - please request invitation', 'the-events-calendar' ) ?></div>
+                <div class="mobile-register-attend nonmember">
+					<?php echo do_shortcode('[fusion_modal_text_link name="request" class="" id=""]Request »[/fusion_modal_text_link]'); ?>
+                </div>
+
+            </div>
+
+            <hr class="mobile-meta-sep pre-video-portal">
+
+            <div class="mobile-meta-livestream-box video-portal">
+
+                <div class="mobile-meta-to-attend nonmembers"><?php esc_html_e( 'Society, CAIA Members: ', 'the-events-calendar' ) ?></div>
+                <div class="mobile-meta-cost"><?php esc_html_e( 'Find your local portal', 'the-events-calendar' ) ?></div>
+                <div class="mobile-register-attend nonmember">
+                    <a href="/asset-owner-series/aos-virtual-keynotes/video-portal-links/">Video Portals »</a>
+                </div>
+
+            </div>
+
+		<?php endif; ?>
+    </div>
+
+    <?php elseif ( $advanced_config && in_array('extra', $advanced_config) ) : ?>
+
+        <div class="mobile-meta-attend-box extra-info">
+
+<a class="my-button-class pricing-modal-btn" target="_self" href="#" data-toggle="modal" data-target=".fusion-modal.all_pricing_info"><span lass="fusion-button-text">Pricing & Options</span></a>
+<div class="mobile-register-attend cvent-reg is-btn"><a href="<?php echo $cvent_link; ?>">Register »</a></div>
+
+</div>
+
+<?php endif; ?>
+<?php
+do_action('tribe_events_single_meta_details_section_end');
+?>
