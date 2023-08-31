@@ -43,66 +43,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</div>
 	<?php endwhile; ?>
 </section>
-<?php //echo do_shortcode('[cfancy-video-posts]'); ?>
-<?php 
-$terms_array = array();
- $terms = get_terms([
-	'taxonomy' => 'video-category',
-	'hide_empty' => false,
-  ]);
-
-  foreach($terms as $term){
-	$terms_array[] = $term->term_id;
-  }
-
-  $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-$all_blog_posts = new WP_Query(
-	array (
-	  'post_type' => 'tribe_events',
-	  'orderby'   => 'meta_value',
-	  'order' => 'DESC',
-	  'post_status' => 'publish',
-	  'posts_per_page' => '6',
-	  'paged' => $paged,
-	  'search_title' => '',
-	  'meta_key' => '_EventStartDate',
-	  'tax_query' => array(
-		  array(
-			  'taxonomy'  => 'video-category',
-			  'field'     => 'term_id',
-			  'terms'     => $terms_array,
-		  )
-	  ),
-  )
-);
-
-if ( $all_blog_posts->have_posts() ) {
-	echo '<ul>';
-	while ( $all_blog_posts->have_posts() ) {
-	  $all_blog_posts->the_post(); 
-		echo '<li>'.get_the_title().'</li>';
-	}  
-
-	echo '</ul>';
-	
-	$total_pages = $all_blog_posts->max_num_pages;
-
-    if ($total_pages > 1){
-
-        $current_page = max(1, get_query_var('paged'));
-
-        echo paginate_links(array(
-            'base' => get_pagenum_link(1) . '%_%',
-            'format' => 'page/%#%',
-            'current' => $current_page,
-            'total' => $total_pages,
-            'prev_text'    => __('« prev'),
-            'next_text'    => __('next »'),
-        ));
-    }    
-}
-
-wp_reset_postdata();
-?>
+<?php echo do_shortcode('[cfancy-video-posts]'); ?>
+<?php //echo do_shortcode('[caf_filter id="79699"]'); ?>
 <?php do_action( 'avada_after_content' ); ?>
 <?php get_footer(); ?>
+

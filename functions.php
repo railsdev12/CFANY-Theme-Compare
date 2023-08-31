@@ -1694,7 +1694,7 @@ min-height: 65px;
 
 .dcs_pag_loading {padding: 20px;}
 .dcs-universal-pagination ul {margin: 0; padding: 0;font-family: var(--nav_typography-font-family);font-size:10px;}
-.dcs-universal-pagination ul li {display: inline; margin: 3px; padding: 4px 4px; background: #FFF; color: #2D63A2; }
+.dcs-universal-pagination ul li {display: inline; margin: 3px; padding: 4px 8px; background: #FFF; color: #2D63A2; }
 .dcs-universal-pagination ul li.active:hover {cursor: pointer; background: #2D63A2; color: white; }
 .dcs-universal-pagination ul li.inactive {color: #2D63A2;font-size:10px;}
 .dcs-universal-pagination ul li.selected {background-color: #2D63A2; color: white;}
@@ -2187,6 +2187,13 @@ button.slide_btn.customNextBtn:hover{opacity:0.8;}
     }
 		});
 
+  //   jQuery(document).on('click','button.customNextBtn',function(){
+  //     owl.trigger('next.owl.carousel');
+  //   });
+  // // Go to the previous item
+  //   jQuery(document).on('click','button.customPrevBtn',function(){
+  //       owl.trigger('prev.owl.carousel', [300]);
+  //   });
 
     let flag=false;
     let ajaxurl='<?php echo admin_url("admin-ajax.php"); ?>';
@@ -2228,7 +2235,7 @@ button.slide_btn.customNextBtn:hover{opacity:0.8;}
     }
     dcs_load_terms();
 
-    function dcs_load_video_preview(term_id='',post_id='' , search_data=''){
+    function dcs_load_video_preview(term_id='',post_id=''){
       jQuery("#loader").show();
       var data = {
             term_id: term_id,
@@ -2244,7 +2251,7 @@ button.slide_btn.customNextBtn:hover{opacity:0.8;}
         });
         return response;
     }
-    dcs_load_video_preview(term_id,post_id='' , search_data='');
+    dcs_load_video_preview(term_id);
 
     jQuery(document).on('click','ul.terms_lists li a',function(e){
       e.preventDefault();
@@ -2254,7 +2261,7 @@ button.slide_btn.customNextBtn:hover{opacity:0.8;}
       let term_id = jQuery(this).attr("data-id");
       jQuery("#first_load h3").text(jQuery(this).text());
       dcs_load_all_posts(1,term_id,post_id='',sort='',search='');
-      dcs_load_video_preview(term_id,post_id='' , search_data='');
+      dcs_load_video_preview(term_id);
       if(viewport_size <= 767)
       { 
         var prev_cat_btn = jQuery('<button type="button" id="pre_cat"><&nbsp;&nbsp;Categories</button>');
@@ -2273,7 +2280,7 @@ button.slide_btn.customNextBtn:hover{opacity:0.8;}
       jQuery(this).parent().addClass('active');
       let post_id = jQuery(this).attr("data-post-id");
       let term_id = jQuery(this).attr("data-term-id");
-      dcs_load_video_preview(term_id,post_id, search_data='');
+      dcs_load_video_preview(term_id,post_id);
       
       if(viewport_size <= 767)
       { 
@@ -2322,32 +2329,14 @@ button.slide_btn.customNextBtn:hover{opacity:0.8;}
       e.preventDefault();
       let search_value = jQuery("input#search").val();
       dcs_load_all_posts(1,term_id='',post_id='',sort_selected='',search_value);
-      setTimeout(function(){
-        var count_search_res = jQuery("#dynamic_load_posts #count_posts").val();
-        var active_post_id = jQuery("#dynamic_load_posts ul li.active a").attr("data-post-id");
-        dcs_load_video_preview(term_id='',active_post_id , search_data='');
-        jQuery("#first_load h3").text('Search Results');
-        jQuery('#first_load').find('p#sresult').remove();
-        jQuery('<p id="sresult">You have searched for and have result '+count_search_res+'</p>').insertAfter('#first_load h3');
-        console.log(count_search_res + ' ' +active_post_id);
-      }, 2000);
-      
+      jQuery("#first_load h3").text('Search Results');
     });
 
     jQuery(document).on("keydown","input#search",function(e) {
         if(e.keyCode == 13){
           let search_value = jQuery("input#search").val();
           dcs_load_all_posts(1,term_id='',post_id='',sort_selected='',search_value);
-          setTimeout(function(){
-            var count_search_res = jQuery("#dynamic_load_posts #count_posts").val();
-            var active_post_id = jQuery("#dynamic_load_posts ul li.active a").attr("data-post-id");
-            dcs_load_video_preview(term_id='',active_post_id , search_data='');
-            jQuery("#first_load h3").text('Search Results');
-            jQuery('#first_load').find('p#sresult').remove();
-            jQuery('<p id="sresult">You have searched for and have result '+count_search_res+'</p>').insertAfter('#first_load h3');
-            console.log(count_search_res + ' ' +active_post_id);
-          }, 2000);
-
+          jQuery("#first_load h3").text('Search Results');
         }
     });
     
@@ -2640,6 +2629,7 @@ function scrollToTop() {
   }	
 }
 
+
 /**
  * AJAX Load Posts Dynamically
  */
@@ -2677,9 +2667,7 @@ function dcs_demo_pagination_load_posts() {
         $meta_key = 'wpb_post_views_count';
       } else {
         $sort_order = 'DESC';
-        //$orderby = 'post_date';
-        $orderby = 'meta_value';
-        $meta_key = '_EventStartDate';
+        $orderby = 'post_date';
       }
 
       if(!empty($search)){
@@ -2688,7 +2676,7 @@ function dcs_demo_pagination_load_posts() {
         $search = '';
       }
 
-
+    
         // Sanitize the received page   
         $page = sanitize_text_field($_POST['page']);
         $cur_page = $page;
@@ -2745,7 +2733,6 @@ function dcs_demo_pagination_load_posts() {
             'meta_key' => $meta_key,
             'post_status' => 'publish',
             'search_title' => $search,
-            'posts_per_page'   => -1,
             'tax_query' => array(
                 array(
                     'taxonomy'  => 'video-category',
@@ -2756,14 +2743,13 @@ function dcs_demo_pagination_load_posts() {
         )
         );
         $count = $count->post_count;
-        //$count = $count->max_num_pages;
-        // echo '<div class="filter">';
+        //echo '<div class="filter">';
         // echo '<div class="page_counter">';
         // echo $_POST['page'].'-'.$per_page.' OF '.$count;
         // echo '</div>';
-        // echo '</div>';
+        //echo '</div>';
         echo '<ul class="posts">';
-        //add_filter( 'posts_where', 'title_filter', 10, 2 );
+        add_filter( 'posts_where', 'title_filter', 10, 2 );
         if ( $all_blog_posts->have_posts() ) {
           while ( $all_blog_posts->have_posts() ) {
             $all_blog_posts->the_post(); 
@@ -2771,10 +2757,9 @@ function dcs_demo_pagination_load_posts() {
             $terms = get_the_terms($post->ID, 'video-category');
                       echo '<li><a href="#" data-term-id = "'.$terms[0]->term_id.'" data-post-id="'.$post->ID.'">' . get_the_title() . '</a></li>';
 
-          }  wp_reset_postdata();
+          }
         }
         echo '</ul>';
-        echo '<input type="hidden" id="count_posts" value="'.$count.'">';
         // This is where the magic happens
         $no_of_paginations = ceil($count / $per_page);
         if ($cur_page >= 7) {
@@ -2800,10 +2785,10 @@ function dcs_demo_pagination_load_posts() {
             <ul>
              <?php
          if ($first_btn && $cur_page > 1) { ?>
-             <li p='1' t='<?php echo $term_id; ?>' class='active'><<</li>
+             <!--<li p='1' t='<?php //echo $term_id; ?>' class='active'><<</li>-->
          <?php
          } else if ($first_btn) { ?>
-             <li p='1'  t='<?php //echo $term_id; ?>' class='inactive'><<</li>
+             <!--<li p='1'  t='<?php //echo $term_id; ?>' class='inactive'><<</li>-->
          <?php
       }
          if ($previous_btn && $cur_page > 1) {
@@ -2833,10 +2818,10 @@ function dcs_demo_pagination_load_posts() {
       }
  
          if ($last_btn && $cur_page < $no_of_paginations) { ?>
-             <li p='<?php echo $no_of_paginations; ?>' class='active'>>></li>
+             <!--<li p='<?php //echo $no_of_paginations; ?>' class='active'>>></li>-->
          <?php 
       } else if ($last_btn) { ?>
-             <li p='<?php echo $no_of_paginations; ?>' class='inactive'>>></li>
+             <!--<li p='<?php //echo $no_of_paginations; ?>' class='inactive'>>></li>-->
          <?php 
       } ?>
             </ul>
@@ -2950,8 +2935,7 @@ function dynamic_load_post_preview_callback()
         $lat_post_args = 
           array (
             'post_type' => 'tribe_events',
-            'orderby'   => 'meta_value',
-            'meta_key' => '_EventStartDate',
+            'orderby'   => 'post_date',
             'order' => 'DESC',
             'post_status' => 'publish',
             'posts_per_page'    => 1,
@@ -3118,7 +3102,7 @@ function qirolab_posts_where( $where, &$wp_query )
 {
     global $wpdb;
     if ( $title = $wp_query->get( 'search_title' ) ) {
-        $where .= " AND " . $wpdb->posts . ".post_title LIKE '%" . esc_sql( $wpdb->esc_like( $title ) ) . "%'";
+        $where .= " AND " . $wpdb->posts . ".post_title LIKE '" . esc_sql( $wpdb->esc_like( $title ) ) . "%'";
     }
     return $where;
 }
@@ -3138,7 +3122,7 @@ function dynamic_fetch_video_callback()
     $text="https://player.vimeo.com/video/809824268";
     $return_array['msg'] = 1;
     //$return_array['video_iframe'] = $serialize_data['video'];
-    $return_array['video_iframe'] = $serialize_data['video'].'<div class="video_heading"><div class="video_title">'.'<span class="p_title">'.get_the_title($post_id).'</span>'.'<span class="v_title">'.get_the_title($video_id).'</span>'.'</div>'.'<div class="share">'.share_btn($post_id,$video_id,$text).'</div></div>';
+    $return_array['video_iframe'] = $serialize_data['video'].'<div class="video_heading"><div class="video_title">'.'<span class="p_title">'.get_the_title($post_id).'</span>'.'<span class="v_title">'.get_the_title($video_id).'</span>'.'</div>'.'<div class="share">'.share_btn($video_id,$text).'</div></div>';
     echo json_encode($return_array);
   }
   die();
@@ -3163,7 +3147,7 @@ function dynamic_load_watch_videos_for_post_callback()
           $serialize_data = get_post_meta($video_object['value']->ID,"_fusion",true);
           $return_array['msg'][$inx] = 1;
           //$return_array['video_iframe'][$inx] = $serialize_data['video'];
-          $return_array['video_iframe'][$inx] = $serialize_data['video'].'<div class="video_heading"><div class="video_title">'.'<span class="p_title">'.get_the_title($post_id).'</span>'.'<span class="v_title">'.get_the_title($video_id).'</span>'.'</div>'.'<div class="share">'.share_btn($post_id,$video_id,$text).'</div></div>';
+          $return_array['video_iframe'][$inx] = $serialize_data['video'].'<div class="video_heading"><div class="video_title">'.'<span class="p_title">'.get_the_title($post_id).'</span>'.'<span class="v_title">'.get_the_title($video_id).'</span>'.'</div>'.'<div class="share">'.share_btn($video_id,$text).'</div></div>';
         }
         $inx++;
       endwhile;
@@ -3180,13 +3164,13 @@ function dynamic_load_watch_videos_for_post_callback()
   die();
 }
 
-function share_btn($post_id,$video_id,$text)
+function share_btn($id,$text)
 {
-$base_url = site_url().'/video-hub';
+
 ob_start();
   ?>
   <ul>
-  <li class="social fb"><a onclick = "window.open('https://www.facebook.com/sharer.php?u=<?php echo $base_url; ?>/<?php echo basename(get_permalink($post_id)); ?>&amp;t=<?php echo $text; ?>','sharewindow','width=800,height=500'); return false;" href="#" target="_blank" rel="noopener"><span><i class="fa fa-facebook" aria-hidden="true"></i></span></a></li>
+  <li class="social fb"><a href="https://facebook.com" target="_blank" rel="noopener"><span><i class="fa fa-facebook" aria-hidden="true"></i></span></a></li>
   <li class="social tw"><a href="https://twitter.com" target="_blank" rel="noopener"><span><i class="fa fa-twitter" aria-hidden="true"></i></span></a></li>
   <li class="social in"><a href="https://linkedin.com" target="_blank" rel="noopener"><span><i class="fa fa-linkedin" aria-hidden="true"></i></span></a></li>
   <li class="social pi"><a href="https://pinterest.com" target="_blank" rel="noopener"><span><i class="fa fa-pinterest-p" aria-hidden="true"></i></span></a></li>
